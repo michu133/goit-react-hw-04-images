@@ -12,15 +12,7 @@ export const App = () => {
     <div>
       <Searchbar />
       {isLoading ? (
-        <Audio
-          height="80"
-          width="80"
-          radius="9"
-          color="green"
-          ariaLabel="loading"
-          wrapperStyle
-          wrapperClass
-        />
+        <p>Loader</p>
       ) : (
         <ImageGallery>{totalHits > 12 ? <Button /> : null}</ImageGallery>
       )}

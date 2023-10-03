@@ -1,23 +1,32 @@
+import React, { useContext, useState } from 'react';
 import { GalleryContext } from 'context/GalleryContext';
-import { useContext } from 'react';
 
 export const Searchbar = () => {
-  const { query, setQuery } = useContext(GalleryContext);
-
-  const handleSearch = newQuery => {
-    if (newQuery !== query) {
-      setQuery(newQuery);
-    }
-  };
+  const {
+    setperPage,
+    setPage,
+    settotalHits,
+    setImages,
+    setQuery,
+    fetchImages,
+  } = useContext(GalleryContext);
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange = e => {
     const { value } = e.target;
-    handleSearch(value);
+    setInputValue(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetchImages(query, 12, 1);
+    setQuery(inputValue);
+    if (inputValue !== '') {
+      fetchImages(inputValue, 12, 1);
+    } else {
+      setImages([]);
+      setQuery('');
+      settotalHits(0);
+    }
   };
 
   return (
@@ -33,7 +42,7 @@ export const Searchbar = () => {
           autoComplete="off"
           autoFocus
           onChange={handleChange}
-          value={query}
+          value={inputValue}
           placeholder="Search images and photos"
         />
       </form>

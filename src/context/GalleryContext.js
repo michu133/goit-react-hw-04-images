@@ -23,7 +23,11 @@ const GalleryProvider = ({ children }) => {
 
       const data = await response.json();
 
-      setImages(curr => [...curr, ...data.hits]);
+      if (page === 1) {
+        setImages(data.hits);
+      } else {
+        setImages(curr => [...curr, ...data.hits]);
+      }
       settotalHits(data.totalHits);
       setisLoading(false);
     } catch (error) {
@@ -33,7 +37,9 @@ const GalleryProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchImages(query, perPage, page);
+    if (query !== '') {
+      fetchImages(query, perPage, page);
+    }
   }, [query, page]);
 
   return (
@@ -50,6 +56,8 @@ const GalleryProvider = ({ children }) => {
         isLoading,
         setisLoading,
         fetchImages,
+        page,
+        setPage,
       }}
     >
       {children}

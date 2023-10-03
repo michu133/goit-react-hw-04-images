@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 
 export const Modal = ({ src, alt, closeModal }) => {
+  const handleClose = e => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
   useEffect(() => {
     document.addEventListener('keydown', handleClose);
 
@@ -9,11 +14,6 @@ export const Modal = ({ src, alt, closeModal }) => {
     };
   }, []);
 
-  const handleClose = e => {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  };
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
       closeModal();
