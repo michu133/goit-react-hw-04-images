@@ -40,7 +40,7 @@ const GalleryProvider = ({ children }) => {
     if (query !== '') {
       fetchImages(query, perPage, page);
     }
-  }, [query, page]);
+  }, [query, page, perPage]);
 
   return (
     <GalleryContext.Provider

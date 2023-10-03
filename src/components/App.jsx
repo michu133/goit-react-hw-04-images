@@ -1,7 +1,6 @@
 import { Searchbar } from './Searchbar';
 import { ImageGallery } from './ImageGallery';
 import { Button } from './Button';
-import { Audio } from 'react-loader-spinner';
 import { useContext } from 'react';
 import { GalleryContext } from 'context/GalleryContext';
 

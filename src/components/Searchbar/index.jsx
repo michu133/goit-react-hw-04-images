@@ -2,14 +2,8 @@ import React, { useContext, useState } from 'react';
 import { GalleryContext } from 'context/GalleryContext';
 
 export const Searchbar = () => {
-  const {
-    setperPage,
-    setPage,
-    settotalHits,
-    setImages,
-    setQuery,
-    fetchImages,
-  } = useContext(GalleryContext);
+  const { settotalHits, setImages, setQuery, fetchImages } =
+    useContext(GalleryContext);
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = e => {
