@@ -7,12 +7,18 @@ export const Modal = ({ src, alt, closeModal }) => {
     }
   };
   useEffect(() => {
+    const handleClose = e => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
     document.addEventListener('keydown', handleClose);
 
     return () => {
       document.removeEventListener('keydown', handleClose);
     };
-  }, [[closeModal]]);
+  }, [handleClose]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
