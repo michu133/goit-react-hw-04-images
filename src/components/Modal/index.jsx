@@ -7,12 +7,6 @@ export const Modal = ({ src, alt, closeModal }) => {
     }
   };
   useEffect(() => {
-    const handleClose = e => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    };
-
     document.addEventListener('keydown', handleClose);
 
     return () => {
